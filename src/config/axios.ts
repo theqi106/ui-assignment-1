@@ -6,7 +6,7 @@ interface AxiosApiResponse<T> {
 }
 
 const api = axios.create({
-  baseURL: "https://ui-assignment-1-zhqu.onrender.com",
+  baseURL: "https://assignment1-sdn302-1.onrender.com",
 });
 
 const AxiosApi = {
