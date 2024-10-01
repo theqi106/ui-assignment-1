@@ -3,8 +3,7 @@ import { IQuiz } from '../constant/Question';
 import { API_DELETE, API_GET } from '../service/Quiz';
 import QuizDetails from './QuizDetail';
 import Header from '../components/Header';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import '../css/Quiz.css'
 const QuizList:React.FC<{  newQuiz?: IQuiz}> = ({newQuiz}) => {
     const [quizzes, setQuizzes] = useState<IQuiz[]>([]);
     const [selectedQuiz, setSelectedQuiz] = useState<IQuiz>();
@@ -38,9 +37,9 @@ const QuizList:React.FC<{  newQuiz?: IQuiz}> = ({newQuiz}) => {
                 {quizzes.map(quiz => (
                     <li key={quiz._id} onClick={() => {setSelectedQuiz(quiz);}}>
                         {quiz.title}
-                        <button className='ml-4' onClick={(e) => {e.stopPropagation();deleteQuiz(quiz._id)}}>
-                        <FontAwesomeIcon icon={faTrash} />
-                        </button>
+                        <button className="btn btn-danger custom-icon" onClick={(e) => {e.stopPropagation();deleteQuiz(quiz._id)}}>
+                            <i className="bi bi-trash"></i>
+                         </button>
                     </li>
                 ))}
             </ul>

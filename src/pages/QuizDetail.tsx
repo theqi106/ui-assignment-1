@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import QuestionForm from '../components/QuestionForm';
 import { IQuiz } from '../constant/Question';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import '../css/Question.css'
 import { API_DELETE } from '../service/Quiz';
 const QuizDetail: React.FC<{q: IQuiz }> = ({ q }) => {
@@ -27,9 +25,9 @@ const QuizDetail: React.FC<{q: IQuiz }> = ({ q }) => {
                     <ul>
 
                         <li>{question.text}
-                        <button className='ml-4' onClick={()=>{deleteQues(question._id)}}>
-                        <FontAwesomeIcon icon={faTrash} />
-                        </button>
+                        <button className="btn btn-danger custom-icon" onClick={()=>{deleteQues(question._id)}}>
+                            <i className="bi bi-trash"></i>
+                         </button>
                         </li>
                         {question.options.map((option,index) =>(
                             <li key={index}>{option}</li>

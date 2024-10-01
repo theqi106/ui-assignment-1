@@ -21,26 +21,31 @@ const CreateQuiz: React.FC<{ setNewQuiz: (quiz: IQuiz) => void }> = ({ setNewQui
             <Header/>
         <form onSubmit={handleSubmit}>
             <h2>Tạo Quiz Mới</h2>
-            <div className='input-text-area'>
-            <input
-                className="block w-full w-50 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                type="text"
-                placeholder="Tiêu đề"
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-                required
-                id='input-quiz'
-            />
-            <textarea
-                className="block w-full w-50 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Mô tả"
-                value={description}
-                onChange={e => setDescription(e.target.value)}
-                required
-                id='text-area-quiz'
-            />
-            </div>
-            <button className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="submit">Tạo Quiz</button>
+            <div className="mb-3 row">
+    <label htmlFor="input-quiz" className="col-sm-2 col-form-label">Tiêu đề</label>
+    <input
+        className="form-control"
+        type="text"
+        placeholder="Tiêu đề"
+        value={title}
+        onChange={e => setTitle(e.target.value)}
+        required
+        id="input-quiz"
+    />
+</div>
+
+<div className="mb-3 row">
+    <label htmlFor="text-area-quiz" className="col-sm-2 col-form-label">Mô tả</label>
+    <textarea
+        className="form-control"
+        placeholder="Mô tả"
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+        required
+        id="text-area-quiz"
+    />
+</div>
+<button className="btn btn-success" type="submit">Tạo Quiz</button>
         </form>
         </div>
     );
