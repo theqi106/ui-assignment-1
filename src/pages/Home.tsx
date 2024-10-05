@@ -3,10 +3,12 @@ import { IQuiz } from '../constant/Question';
 import { API_DELETE, API_GET } from '../service/Quiz';
 import QuizDetails from './QuizDetail';
 import Header from '../components/Header';
-import '../css/Quiz.css'
+import '../css/Quiz.css';
+import { useNavigate } from 'react-router-dom';
 const QuizList:React.FC<{  newQuiz?: IQuiz}> = ({newQuiz}) => {
     const [quizzes, setQuizzes] = useState<IQuiz[]>([]);
     const [selectedQuiz, setSelectedQuiz] = useState<IQuiz>();
+    const navigate = useNavigate();
     const deleteQuiz = async (quizId : string) => {
         try {
             await API_DELETE(`/quizzes/${quizId}`);
@@ -40,6 +42,9 @@ const QuizList:React.FC<{  newQuiz?: IQuiz}> = ({newQuiz}) => {
                         <button className="btn btn-danger custom-icon" onClick={(e) => {e.stopPropagation();deleteQuiz(quiz._id)}}>
                             <i className="bi bi-trash"></i>
                          </button>
+                        <button className="btn btn-warning me-2" onClick={(e) => { e.stopPropagation(); navigate(`/edit/${quiz._id}`,{ state: { quiz } });}}>
+                            <i className="bi bi-pencil"></i>
+                        </button>
                     </li>
                 ))}
             </ul>
